@@ -500,6 +500,9 @@ public class QuarkusJpaConnectionProviderFactory implements JpaConnectionProvide
                             if (users.getUserByUsername(userRep.getUsername(), realm) != null) {
                                 ServicesLogger.LOGGER.notCreatingExistingUser(userRep.getUsername());
                             } else {
+                                logger.infof("ivyyueli add user email: %s", userRep.getEmail());
+                                logger.infof("ivyyueli add user firstName: %s", userRep.getFirstName());
+                                logger.infof("ivyyueli add user lastName: %s", userRep.getLastName());
                                 UserModel user = users.addUser(realm, userRep.getUsername());
                                 user.setEnabled(userRep.isEnabled());
                                 RepresentationToModel.createCredentials(userRep, session, realm, user, false);
